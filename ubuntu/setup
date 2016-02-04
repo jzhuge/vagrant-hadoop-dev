@@ -7,13 +7,16 @@ run_step() {
 }
 
 run_step "Provisioning Hadoop Development Environment"
-sudo apt-get update
 
 run_step "Installing Git"
 sudo apt-get install -y git
 
-run_step "Installing OpenJDK 7"
-sudo apt-get install -y openjdk-7-jdk
+run_step "Installing Oracle Java 7"
+sudo apt-get purge openjdk*
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+# sudo apt-get install -y oracle-java7-installer
 
 run_step "Installing Maven"
 sudo apt-get -y install maven
@@ -24,7 +27,22 @@ sudo apt-get -y install build-essential autoconf automake libtool cmake zlib1g-d
 run_step "Installing ProtocolBuffer 2.5.0"
 sudo apt-get -y install protobuf-compiler
 
-run_step "Installing Bats"
-git clone https://github.com/sstephenson/bats.git
-cd bats
-sudo ./install.sh /usr/local
+run_step "Installing Snappy compression"
+sudo apt-get install snappy libsnappy-dev
+
+# run_step "Installing Intel ISA-L library for erasure coding"
+#   Please refer to https://01.org/intel%C2%AE-storage-acceleration-library-open-source-version
+
+run_step "Installing Bzip2"
+sudo apt-get -y install bzip2 libbz2-dev
+
+run_step "Installing Jansson (C Library for JSON)"
+sudo apt-get -y install libjansson-dev
+
+run_step "Installing Linux FUSE"
+sudo apt-get -y install fuse libfuse-dev
+
+# run_step "Installing Bats"
+# git clone https://github.com/sstephenson/bats.git
+# cd bats
+# sudo ./install.sh /usr/local
