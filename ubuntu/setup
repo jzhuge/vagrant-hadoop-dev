@@ -7,16 +7,19 @@ run_step() {
 }
 
 run_step "Provisioning Hadoop Development Environment"
+sudo apt-get install software-properties-common
 
 run_step "Installing Git"
-sudo apt-get install -y git
+sudo apt-get install -y git bash-completion
 
-run_step "Installing Oracle Java 7"
-sudo apt-get purge openjdk*
-sudo apt-get install software-properties-common
+run_step "Setting up Oracle Java PPA"
 sudo add-apt-repository ppa:webupd8team/java
 sudo apt-get update
-# sudo apt-get install -y oracle-java7-installer
+
+run_step "Installing Oracle Java 7"
+echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
+echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections
+sudo apt-get install -y oracle-java7-installer
 
 run_step "Installing Maven"
 sudo apt-get -y install maven

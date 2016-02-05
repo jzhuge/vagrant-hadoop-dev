@@ -14,4 +14,4 @@ Install at least one provider, such as VirtualBox.
 	git clone -o asflive git://git.apache.org/hadoop.git
 
 ### Build Hadoop in the VM
-	mvn install -Pdist -DskipTests
+	mvn clean install -DskipTests -Dmaven.javadoc.skip -Pdist,native
