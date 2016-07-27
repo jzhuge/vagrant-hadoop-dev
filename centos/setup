@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+run_step() {
+	echo
+	echo "  === $@ ==="
+	echo
+}
+
+run_step "Provisioning Hadoop Development Environment"
+
+run_step "Installing Git"
+sudo yum install -y git bash-completion
+
+run_step "Installing Oracle Java"
+sudo yum install -y java-1.7.0-openjdk
+sudo yum install -y java-1.8.0-openjdk
+
+run_step "Installing Maven"
+sudo yum install -y maven
+
+run_step "Installing Native Libraries"
+sudo yum install -y build-essential autoconf automake libtool cmake zlib1g-dev pkg-config libssl-dev
+
+run_step "Installing ProtocolBuffer 2.5.0"
+sudo yum install -y protobuf-compiler
+
+run_step "Installing Snappy compression"
+sudo yum install -y snappy libsnappy-dev
+
+# run_step "Installing Intel ISA-L library for erasure coding"
+#   Please refer to https://01.org/intel%C2%AE-storage-acceleration-library-open-source-version
+
+run_step "Installing Bzip2"
+sudo yum install -y bzip2 libbz2-dev
+
+run_step "Installing Jansson (C Library for JSON)"
+sudo yum install -y libjansson-dev
+
+run_step "Installing Linux FUSE"
+sudo yum install -y fuse libfuse-dev
+
+# run_step "Installing Bats"
+# git clone https://github.com/sstephenson/bats.git
+# cd bats
+# sudo ./install.sh /usr/local
