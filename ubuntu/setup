@@ -7,7 +7,7 @@ run_step() {
 }
 
 run_step "Provisioning Hadoop Development Environment"
-sudo apt-get install software-properties-common
+sudo apt-get install -y software-properties-common
 
 run_step "Installing Git"
 sudo apt-get install -y git bash-completion
@@ -22,28 +22,28 @@ echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-se
 sudo apt-get install -y oracle-java7-installer
 
 run_step "Installing Maven"
-sudo apt-get -y install maven
+sudo apt-get install -y maven
 
 run_step "Installing Native Libraries"
-sudo apt-get -y install build-essential autoconf automake libtool cmake zlib1g-dev pkg-config libssl-dev
+sudo apt-get install -y build-essential autoconf automake libtool cmake zlib1g-dev pkg-config libssl-dev
 
 run_step "Installing ProtocolBuffer 2.5.0"
-sudo apt-get -y install protobuf-compiler
+sudo apt-get install -y protobuf-compiler
 
 run_step "Installing Snappy compression"
-sudo apt-get install snappy libsnappy-dev
+sudo apt-get install -y snappy libsnappy-dev
 
 # run_step "Installing Intel ISA-L library for erasure coding"
 #   Please refer to https://01.org/intel%C2%AE-storage-acceleration-library-open-source-version
 
 run_step "Installing Bzip2"
-sudo apt-get -y install bzip2 libbz2-dev
+sudo apt-get install -y bzip2 libbz2-dev
 
 run_step "Installing Jansson (C Library for JSON)"
-sudo apt-get -y install libjansson-dev
+sudo apt-get install -y libjansson-dev
 
 run_step "Installing Linux FUSE"
-sudo apt-get -y install fuse libfuse-dev
+sudo apt-get install -y fuse libfuse-dev
 
 # run_step "Installing Bats"
 # git clone https://github.com/sstephenson/bats.git
