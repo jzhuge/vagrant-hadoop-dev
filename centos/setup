@@ -16,10 +16,12 @@ sudo yum install -y java-1.7.0-openjdk java-1.7.0-openjdk-devel
 sudo yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel
 
 run_step "Installing Maven"
-sudo yum install -y maven
+# sudo yum install -y maven
+curl -O http://apache.mirrors.lucidnetworks.net/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.tar.gz
+tar xf apache-maven-3.5.0-bin.tar.gz
 
 run_step "Installing Native Libraries"
-sudo yum install -y build-essential autoconf automake libtool cmake zlib1g-dev pkg-config
+sudo yum install -y build-essential autoconf automake libtool cmake3 zlib1g-dev pkg-config
 sudo yum install -y gcc gcc-c++ make
 sudo yum install -y zlib zlib-devel xz xz-devel
 sudo yum install -y openssl openssl-devel
